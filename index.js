@@ -33,7 +33,8 @@ bot.on("message", async message => {
                     url: "https://static-cdn.jtvnw.net/jtv_user_pictures/0c7f6a6d8ff7bc70-profile_image-300x300.png"
                 },
                 footer: {
-
+                    icon_url: bot.user.avatarURL,
+                    text: `Embed created at ${date}`
                 }
 
             },
