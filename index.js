@@ -14,11 +14,11 @@ bot.on("message", async message => {
 
     if (message.author !== bot.user) return;
     if (!message.content.startsWith(prefix)) return;
-    
+
     const params = message.content.split(" ").slice(1);
 
     if (message.content.startsWith(prefix + 'live')) {
-        var date = new Date();
+        var date = new Date(day, month, year);
         message.channel.send({ 
             embed: {
                 color: 3447003,
@@ -31,6 +31,9 @@ bot.on("message", async message => {
                 description: "DeviateMega is now live! Click [here](https://www.twitch.tv/itsMegaGG) to start watching!",
                 image: {
                     url: "https://static-cdn.jtvnw.net/jtv_user_pictures/0c7f6a6d8ff7bc70-profile_image-300x300.png"
+                },
+                footer: {
+
                 }
 
             },
