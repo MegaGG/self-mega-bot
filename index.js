@@ -18,7 +18,7 @@ bot.on("message", async message => {
     const params = message.content.split(" ").slice(1);
 
     if (message.content.startsWith(prefix + 'live')) {
-        var date = new Date(year, month, day);
+        var date = new Date();
         message.channel.send({ 
             embed: {
                 color: 3447003,
