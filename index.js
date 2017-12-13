@@ -7,7 +7,8 @@ const prefix = config.prefix;
 bot.login(process.env.SELF_TOKEN);
 
 bot.on("ready", () => {
-    console.log(`${bot.user.tag} has logged in...`)
+    console.log(`${bot.user.tag} has logged in...`);
+    bot.users.find('id', '115261060977655808').dmChannel.send('Bot has restarted')
 });
 
 bot.on("message", async message => {
@@ -67,9 +68,8 @@ bot.on("message", async message => {
             msg_array.map(m => m.delete().catch(console.error));
         });
     }
-    if (message.content.startsWith(prefix + "shutdown")) {
-        const msg = await message.channel.send("Selfbot shutting down...");
-        msg.edit("Selfbot has successfully shutdown. Exit code: 0");
+    if (message.content.startsWith(prefix + "restart")) {
+        message.reply("Selfbot restarting...");
         process.exit(0);
         
     }
