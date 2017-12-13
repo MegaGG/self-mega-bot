@@ -20,7 +20,7 @@ bot.on("message", async message => {
     console.log(`${message.author.username} has used command ${message.content}`);
 
     if (message.content.startsWith(prefix + 'live')) {
-        var date = new Date();
+        var date = new Date().toUTCString();
         message.channel.send({ 
             embed: {
                 color: 3447003,
