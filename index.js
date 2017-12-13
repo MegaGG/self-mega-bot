@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const config = require('./JSON/config.json')
 const prefix = config.prefix;
 
-bot.login(process.env.SELF_TOKEN);
+bot.login("MjE0NjYyNTA5MTc1NTA0ODk2.DGlJsg.0VLzlI-eVHAbiPm3r4AXuZAmqsE");
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`)
@@ -15,7 +15,7 @@ bot.on("message", async message => {
     if (message.author !== bot.user) return;
     if (!message.content.startsWith(prefix)) return;
 
-
+    const params = message.content.split(" ").slice(1);
     
     console.log(`${message.author.username} has used command ${message.content}`);
 
@@ -43,8 +43,7 @@ bot.on("message", async message => {
         })
 
     }
-    
-    const params = message.content.split(" ").slice(1);
+
     if (message.content.startsWith(prefix + "prune")) {
         // get number of messages to prune
         let messagecount = parseInt(params[0]);
