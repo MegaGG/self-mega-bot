@@ -16,6 +16,8 @@ bot.on("message", async message => {
     if (!message.content.startsWith(prefix)) return;
 
     const params = message.content.split(" ").slice(1);
+    
+    console.log(`${message.author.username} has used command ${message.content}`);
 
     if (message.content.startsWith(prefix + 'live')) {
         var date = new Date();
