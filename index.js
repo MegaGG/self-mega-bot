@@ -8,7 +8,7 @@ bot.login(process.env.SELF_TOKEN);
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
-    bot.users.find('id', '115261060977655808').dmChannel.send('Bot has restarted')
+    bot.users.find('id', '214662509175504896').dmChannel.send('Bot has restarted')
 });
 
 bot.on("message", async message => {
