@@ -15,12 +15,16 @@ bot.on("message", async message => {
     if (message.author !== bot.user) return;
     if (!message.content.startsWith(prefix)) return;
 
-    const params = message.content.split(" ").slice(1);
+    let messageArray = message.content.split(" ");
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
     
     console.log(`${message.author.username} has used command ${message.content}`);
 
     if (message.content.startsWith(prefix + 'live')) {
         var date = new Date().toUTCString();
+        message.delete();
+        let text = args.slice(0).join(" ");
         message.channel.send({ 
             embed: {
                 color: 3447003,
@@ -30,7 +34,7 @@ bot.on("message", async message => {
                 },
                 title: "🛑 **LIVE!** 🛑",
                 url: "https://www.twitch.tv/itsMegaGG",
-                description: "DeviateMega is now live! Click [here](https://www.twitch.tv/itsMegaGG) to start watching!",
+                description: `${text} | Click [here](https://www.twitch.tv/itsMegaGG) to start watching!`,
                 image: {
                     url: "https://static-cdn.jtvnw.net/jtv_user_pictures/0c7f6a6d8ff7bc70-profile_image-300x300.png"
                 },
@@ -43,6 +47,8 @@ bot.on("message", async message => {
         })
 
     }
+
+    const params = message.content.split(" ").slice(1);
 
     if (message.content.startsWith(prefix + "prune")) {
         // get number of messages to prune
@@ -60,6 +66,12 @@ bot.on("message", async message => {
             // Has to delete messages individually. Cannot use `deleteMessages()` on selfbots.
             msg_array.map(m => m.delete().catch(console.error));
         });
+    }
+    if (message.content.startsWith(prefix + "shutdown")) {
+        const msg = await message.channel.send("Selfbot shutting down...");
+        msg.edit("Selfbot has successfully shutdown. Exit code: 0");
+        process.exit(0);
+        
     }
 
 });
