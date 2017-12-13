@@ -15,7 +15,7 @@ bot.on("message", async message => {
     if (message.author !== bot.user) return;
     if (!message.content.startsWith(prefix)) return;
 
-    const params = message.content.split(" ").slice(1);
+
     
     console.log(`${message.author.username} has used command ${message.content}`);
 
@@ -43,7 +43,8 @@ bot.on("message", async message => {
         })
 
     }
-
+    
+    const params = message.content.split(" ").slice(1);
     if (message.content.startsWith(prefix + "prune")) {
         // get number of messages to prune
         let messagecount = parseInt(params[0]);
