@@ -9,7 +9,8 @@ bot.login(process.env.SELF_TOKEN);
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
     bot.send('390431268174561280', 'bot has restarted')
-
+}
+       
 bot.on("message", async message => {
 
     if (message.author !== bot.user) return;
