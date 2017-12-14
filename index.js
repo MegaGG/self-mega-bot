@@ -8,7 +8,6 @@ bot.login(process.env.SELF_TOKEN);
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
-    
 });
 
 bot.on("message", async message => {
@@ -69,7 +68,7 @@ bot.on("message", async message => {
         });
     }
     if (message.content.startsWith(prefix + "restart")) {
-        message.reply("Selfbot restarting...");
+        const msg = await message.channel.send("Selfbot restarting...");
         process.exit(0);
         
     }
