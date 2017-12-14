@@ -8,8 +8,7 @@ bot.login(process.env.SELF_TOKEN);
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
-    bot.send('390431268174561280', 'bot has restarted')
-}
+});
        
 bot.on("message", async message => {
 
@@ -21,7 +20,7 @@ bot.on("message", async message => {
     let args = messageArray.slice(1);
     
     console.log(`${message.author.username} has used command ${message.content}`);
-
+    
 
     if (message.content.startsWith(prefix + 'live')) {
         var date = new Date().toUTCString();
