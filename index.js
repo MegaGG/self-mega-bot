@@ -73,5 +73,9 @@ bot.on("message", async message => {
         process.exit(0);
         
     }
+    
+    if (message.content.startsWith(prefix + 'test')) {
+        message.delete();
+    }
 
 });
