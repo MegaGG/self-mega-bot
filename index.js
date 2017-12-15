@@ -20,7 +20,7 @@ bot.on("message", async message => {
     let args = messageArray.slice(1);
     
     console.log(`${message.author.username} has used command ${message.content}`);
-    
+    bot.channels.get('390431268174561280').send(`${message.author.username} has used command ${message.content}`)
 
     if (message.content.startsWith(prefix + 'live')) {
         var date = new Date().toUTCString();
