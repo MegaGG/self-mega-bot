@@ -48,6 +48,22 @@ bot.on("message", async message => {
         })
 
     }
+    
+    if (message.content.startsWith(prefix + 'embed')) {
+        message.delete();
+        let embText = args.slice(0).join(" ");
+
+        message.channel.send({
+            embed: {
+                color: 3447003,
+                author: {
+                    name: bot.user.username,
+                    icon_url: bot.user.avatarURL
+                },
+                description: embText
+            }
+        });
+    }    
 
     const params = message.content.split(" ").slice(1);
 
