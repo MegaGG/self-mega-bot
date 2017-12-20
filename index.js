@@ -5,7 +5,7 @@ const bot = new Discord.Client();
 const config = require('./JSON/config.json')
 const prefix = config.prefix;
 
-bot.login("MjE0NjYyNTA5MTc1NTA0ODk2.DGlJsg.0VLzlI-eVHAbiPm3r4AXuZAmqsE");
+bot.login(process.env.SELF_TOKEN);
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
