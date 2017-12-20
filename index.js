@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
+const fs = require('fs');
 const bot = new Discord.Client();
 
 const config = require('./JSON/config.json')
 const prefix = config.prefix;
 
-bot.login(process.env.SELF_TOKEN);
+bot.login("MjE0NjYyNTA5MTc1NTA0ODk2.DGlJsg.0VLzlI-eVHAbiPm3r4AXuZAmqsE");
 
 bot.on("ready", () => {
     console.log(`${bot.user.tag} has logged in...`);
@@ -18,11 +19,11 @@ bot.on("message", async message => {
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
     let args = messageArray.slice(1);
-    
+
     console.log(`${message.author.username} has used command ${message.content}`);
     bot.channels.get('390431268174561280').send(`${message.author.username} has used command ${message.content}`)
 
-    if (message.content.startsWith(prefix + 'live')) {
+    if (command === `${prefix}live`) {
         var date = new Date().toUTCString();
         message.delete();
         let text = args.slice(0).join(" ");
@@ -49,25 +50,27 @@ bot.on("message", async message => {
 
     }
     
-    if (message.content.startsWith(prefix + 'embed')) {
+    if (command === `${prefix}quote`) {
         message.delete();
-        let embText = args.slice(0).join(" ");
+        let msg = args.slice(1).join(" ")
+        let member = message.mentions.members.first();
+
 
         message.channel.send({
             embed: {
                 color: 3447003,
                 author: {
-                    name: bot.user.username,
-                    icon_url: bot.user.avatarURL
+                    name: member.user.username,
+                    icon_url: member.user.avatarURL
                 },
-                description: embText
+                description: msg
             }
         });
     }    
 
     const params = message.content.split(" ").slice(1);
 
-    if (message.content.startsWith(prefix + "prune")) {
+    if (command === `${prefix}prune`) {
         // get number of messages to prune
         let messagecount = parseInt(params[0]);
         // get the channel logs
@@ -90,8 +93,8 @@ bot.on("message", async message => {
         
     }
     
-    if (message.content.startsWith(prefix + 'test')) {
-        message.delete();
-    }
+    // if (message.content.startsWith(prefix + 'test')) {
+    //     message.delete();
+    // }
 
 });
